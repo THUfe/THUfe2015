@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>{{ .Site.Title }}</title>
+  {{ partial "head_includes.html" . }}
+</head>
+
+<body>
+  {{ partial "navbar.html" . }}
+  <div class="section-tout">
+    <div class="container">
+      <div class="row" id="slides">
+        <h1># 课件</h1>
+      </div>
+      <div class="row">
+        {{ range where .Data.Pages "Section" "slides" }} {{ .Render "summary" }} {{ end }}
+      </div>
+      <div class="row" id="assignments">
+        <h1># 作业</h1>
+      </div>
+      <div class="row">
+        {{ range where .Data.Pages "Section" "assignments" }} {{ .Render "summary" }} {{end}}
+      </div>
+    </div>
+  </div>
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

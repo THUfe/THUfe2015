@@ -1,0 +1,4 @@
+baseurl = "http://thufe.github.io/"
+canonifyurls = true
+languageCode = "zh-cn"
+title = "2015-清华大学-Web前端技术实训课程"
