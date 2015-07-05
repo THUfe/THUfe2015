@@ -28,7 +28,7 @@ gulp.task('clean-css', ['css'], function(cb) {
 
 gulp.task('fonts', function() {
   return gulp.src('bower_components/bootstrap/fonts/*')
-    .pipe(gulp.dest('static/fonts/'));
+    .pipe(gulp.dest('static/css/fonts/'));
 });
 
 gulp.task('default', ['html', 'css', 'clean-css', 'fonts']);
