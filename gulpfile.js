@@ -26,4 +26,9 @@ gulp.task('clean-css', ['css'], function(cb) {
   del(['layouts/partials/css/lib/3rd.css'], cb);
 });
 
-gulp.task('default', ['html', 'css', 'clean-css']);
+gulp.task('fonts', function() {
+  return gulp.src('bower_components/bootstrap/fonts/*')
+    .pipe(gulp.dest('static/fonts/'));
+});
+
+gulp.task('default', ['html', 'css', 'clean-css', 'fonts']);
