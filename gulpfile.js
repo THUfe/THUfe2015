@@ -2,9 +2,10 @@ var gulp = require('gulp'),
     gulpif = require('gulp-if'),
     useref = require('gulp-useref'),
     rename = require('gulp-rename'),
-    minifyCss = require('gulp-minify-css');
+    minifyCss = require('gulp-minify-css'),
+    del = require('del');
 
-gulp.task('default', function() {
+gulp.task('html', function() {
   var assets = useref.assets({searchPath:['bower_components','.']});
 
   return gulp.src('layouts/partials/head_includes_master.html')
@@ -15,3 +16,14 @@ gulp.task('default', function() {
     .pipe(useref())
     .pipe(gulp.dest('layouts/partials/'));
 });
+
+gulp.task('css', ['html'] , function() {
+  return gulp.src('layouts/partials/css/lib/3rd.css')
+    .pipe(gulp.dest('static/css/lib/'));
+});
+
+gulp.task('clean-css', ['css'], function(cb) {
+  del(['layouts/partials/css/lib/3rd.css'], cb);
+});
+
+gulp.task('default', ['html', 'css', 'clean-css']);
